@@ -4,7 +4,6 @@ class A {
      * @arg arga0
      * @instance
      * @method methoda
-     * @param arga0
      * @param arga1 */
     methoda(arga0, arga1) {}
 
@@ -12,13 +11,11 @@ class A {
      * @arg arga0
      * @instance
      * @method methoda2
-     * @param {number} arga0
      * @param arga1 */
     methoda2(arga0, arga1) {}
 }
 
-/** @class B
-* @param n */ class B {
+/** @class B */ class B {
     /**
     * @param {number} n
     */

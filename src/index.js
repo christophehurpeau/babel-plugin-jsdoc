@@ -1,5 +1,6 @@
 import 'better-log/install';
 import { addTag } from './TraversalUtils';
+import { docCommentIndex } from './NodeUtils';
 import typeAnnotationToJsdocType from './typeAnnotationToJsdocType';
 
 module.exports = function({ types: t }) {
@@ -41,8 +42,10 @@ module.exports = function({ types: t }) {
                                 }
                             }
                         } else {
-                            // add tags in ClassDeclaration
-                            path = path.parentPath.parentPath;
+                            if (docCommentIndex(node) === -1) {
+                                // add tags in ClassDeclaration
+                                path = path.parentPath.parentPath;
+                            }
                         }
                     }
                 }
