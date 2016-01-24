@@ -1,6 +1,6 @@
 {
-  "name": "babel-plugin-add-jsdoc-properties",
-  "version": "0.1.4",
+  "name": "babel-plugin-add-jsdoc-annotations",
+  "version": "2.0.0",
   "description": "Adds JSDoc annotations to source code",
   "repository": "motiz88/babel-plugin-add-jsdoc-properties",
   "license": "MIT",
