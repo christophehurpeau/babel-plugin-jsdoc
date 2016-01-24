@@ -1,60 +1,87 @@
-/** @class A */
+/** @class A
+ */
 class A {
-    /** @memberof A
+    /**
+     * @memberof A
      * @arg arga0
      * @instance
      * @method methoda
-     * @param arga1 */
+     * @param arga1
+     */
     methoda(arga0, arga1) {}
 
-    /** @memberof A
-     * @arg arga0
+    /**
+     * @memberof A
+     * @arg arga0 description of the arg a 0
      * @instance
      * @method methoda2
-     * @param arga1 */
+     * @param arga1
+     */
     methoda2(arga0, arga1) {}
 }
 
-/** @class B */ class B {
+/** @class B
+ */
+class B {
     /**
     * @param {number} n
     */
     constructor(n) {}
-    /** @memberof B
+    /**
+     * @memberof B
      * @instance
-     * @method methodb */ methodb() {}
-    /** @memberof B
+     * @method methodb
+     */ methodb() {}
+    /**
+     * @memberof B
      * @instance
      * @method methodb2
-     * @returns {string} */ methodb2() {}
+     * @returns {string}
+     */ methodb2() {}
 
-    /** @memberof B
+    /**
+     * @memberof B
      * @instance
-     * @member prop */ get prop() {}
-    /** @memberof B
+     * @member prop
+     */ get prop() {}
+    /**
+     * @memberof B
      * @instance
-     * @param prop */ set prop(prop) {}
+     * @param prop
+     */ set prop(prop) {}
 
-    /** @memberof B
+    /**
+     * @memberof B
      * @instance
-     * @member {number} prop2 */ get prop2() {}
+     * @member {number} prop2
+     */ get prop2() {}
 }
 
-/* @class */ /** @class C */ class C {
-    /** @memberof C
+/* @class */
+/**
+ * @class C
+ */ class C {
+    /**
+     * @memberof C
      * @instance
-     * @method methodc */
+     * @method methodc
+     */
     methodc() {}
 }
 
 /** This is class D
  * @class D
- * @param {number} n */ class D {
+ * @param {number} n
+ */
+class D {
     constructor(n) {}
-    /** @memberof D
+    /**
+     * @memberof D
      * @instance
-     * @method methodd */ methodd() {}
-    /** @memberof D
+     * @method methodd
+     */ methodd() {}
+    /**
+     * @memberof D
      * @instance
      * @method methodd2
      * @param {string} arg1
@@ -71,30 +98,42 @@ class A {
      * @param {int} [arg12]
      * @param {int} [arg13=0]
      * @param {string} [arg14=test]
-     * @returns {string} */ methodd2(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11, arg12, arg13 = 0, arg14 = 'test') {}
+     * @returns {string}
+     */ methodd2(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11, arg12, arg13 = 0, arg14 = 'test') {}
 
     /** @method method3
      * @memberof D
-     * @instance */
+     * @instance
+     */
     ['method' + 3]() {}
     /** @method @@iterator
      * @memberof D
-     * @instance */
+     * @instance
+     */
     [Symbol.iterator]() {}
 }
 
-export default /** @class E */ class E {
-    /** @memberof E
+/***/
+export default /**
+* This is class E
+
+* @class E
+*/ class E {
+    /**
+     * @memberof E
      * @static
      * @method methode0
-     * @param i */
+     * @param i
+     */
     static methode0(i) {}
 
-    /** @memberof E
+    /**
+     * @memberof E
      * @instance
      * @method methode1
      * @param first
-     * @param {...*} args */ methode1(first, ...args) {}
+     * @param {...*} args
+     */ methode1(first, ...args) {}
 
     constructor() {}
 }

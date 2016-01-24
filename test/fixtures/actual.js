@@ -1,38 +1,45 @@
 /** @class A */
 class A {
-	/** @memberof A
-	  * @arg arga0 */
-	methoda(arga0, arga1) {}
+    /**
+     * @memberof A
+     * @arg arga0
+     */
+    methoda(arga0, arga1) {}
 
-    /** @memberof A
-   	  * @arg arga0 */
-   	methoda2(arga0: number, arga1) {}
+    /**
+     * @memberof A
+     * @arg arga0 description of the arg a 0
+     */
+    methoda2(arga0: number, arga1) {}
 }
 
-/** @class B */ class B {
+/** @class B */
+class B {
     /**
      * @param {number} n
      */
     constructor(n) {
 
     }
-	methodb() {}
-   	methodb2(): string {}
+    methodb() {}
+    methodb2(): string {}
 
     get prop() {}
     set prop(prop) {}
     get prop2(): number {}
 }
 
-/* @class */ class C {
-	methodc() {}
+/* @class */
+class C {
+    methodc() {}
 }
 
-/** This is class D */ class D {
+/** This is class D */
+class D {
     constructor(n: number) {
 
     }
-	methodd() {}
+    methodd() {}
     methodd2(
         arg1: string,
         arg2: number,
@@ -56,8 +63,11 @@ class A {
     [Symbol.iterator]() {}
 }
 
+/**
+ * This is class E
+ */
 export default class E {
-	static methode0(i) {}
-	methode1(first, ...args) {}
-	constructor() {}
+    static methode0(i) {}
+    methode1(first, ...args) {}
+    constructor() {}
 }

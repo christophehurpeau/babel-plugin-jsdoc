@@ -18,8 +18,10 @@ export default function typeAnnotationToJsdocType(annotation) {
                 return 'Function';
             }
             if (annotation.typeParameters) {
-                var childTypes = annotation.typeParameters.params.map(typeAnnotationToJsdocType).join(', ');
-                return annotation.id.name + '.<' + childTypes + '>';
+                const childTypes = annotation.typeParameters.params
+                    .map(typeAnnotationToJsdocType)
+                    .join(', ');
+                return `${annotation.id.name}.<${childTypes}>`;
             }
             return annotation.id.name;
         case 'ObjectTypeAnnotation':
