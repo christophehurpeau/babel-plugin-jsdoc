@@ -31,6 +31,7 @@ export default function jsdoc(path, tags) {
     }
 
     const jsdocComment = findOrCreateJsdoc(path);
+    jsdocComment.value = jsdocComment.value.trim();
     const parsedJsdoc = parseJsdoc(jsdocComment.value);
     const parsedTags = parsedJsdoc && parsedJsdoc.tags.map(normalizeTag);
 

@@ -1,4 +1,4 @@
-/** @class A */
+/** This is class A */
 class A {
     /**
      * @memberof A
@@ -13,7 +13,6 @@ class A {
     methoda2(arga0: number, arga1) {}
 }
 
-/** @class B */
 class B {
     /**
      * @param {number} n

@@ -1,33 +1,12 @@
 import 'better-log/install';
 import jsdoc from './jsdoc';
-import { findJsdoc } from './jsdocNodeComment';
+import { findJsdoc, findOrCreateJsdoc } from './jsdocNodeComment';
 import typeAnnotationToJsdocType from './typeAnnotationToJsdocType';
+
 
 module.exports = function pluginAddJsdocAnnotations({ types: t }) {
     return {
         visitor: {
-            'ClassDeclaration|ClassExpression'(path, state) {
-                if (path.parent && path.parent.type === 'ExportDefaultDeclaration') {
-                    const jsdocComment = findJsdoc(path.node);
-
-                    if (!jsdocComment) {
-                        const parentJsdocComment = findJsdoc(path.parent);
-
-                        if (parentJsdocComment) {
-                            path.addComment('leading', parentJsdocComment.value);
-                            parentJsdocComment.value = '*';
-                        }
-                    }
-                }
-
-                jsdoc(path, [
-                    {
-                        title: 'class',
-                        name: path.node.id.name,
-                    },
-                ]);
-            },
-
             'FunctionDeclaration|FunctionExpression|ClassMethod'(path, state) {
                 const { node } = path;
                 const tags = [];
@@ -37,35 +16,6 @@ module.exports = function pluginAddJsdocAnnotations({ types: t }) {
                         title: 'function',
                         name: node.key && node.key.name,
                     });
-                } else {
-                    const classDeclarationId = path.parentPath.parent.id;
-                    if (classDeclarationId.name) {
-                        if (node.kind !== 'constructor') {
-                            tags.push({
-                                title: 'memberof',
-                                name: classDeclarationId.name,
-                            });
-                            if (node.static) {
-                                tags.push({ title: 'static' });
-                            } else {
-                                tags.push({ title: 'instance' });
-                            }
-
-                            if (node.key.name) {
-                                if (node.kind === 'method') {
-                                    tags.push({
-                                        title: 'method',
-                                        name: node.key.name,
-                                    });
-                                }
-                            }
-                        } else {
-                            if (!findJsdoc(node)) {
-                                // add tags in ClassDeclaration
-                                path = path.parentPath.parentPath;
-                            }
-                        }
-                    }
                 }
 
                 if (node.params) {
