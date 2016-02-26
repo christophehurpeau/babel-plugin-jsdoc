@@ -22,7 +22,7 @@
     "doctrine": "^1.1.0"
   },
   "peerDependencies": {
-    "babel": "6.x.x"
+    "babel-core": "6.x.x"
   },
   "devDependencies": {
     "babel": "^6.3.26",
