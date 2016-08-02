@@ -22,7 +22,6 @@ module.exports = function pluginAddJsdocAnnotations({ types: t }) {
                                  && typeAnnotationToJsdocType(node.returnType.typeAnnotation);
                     tags.push({
                         title: 'type',
-                        name: node.key.name,
                         type,
                     });
                 } else if (node.returnType) {

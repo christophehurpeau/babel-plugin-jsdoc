@@ -58,13 +58,13 @@ class A {
     */ methodWithFlowReturn() {}
     
     /**
-     * @type prop
+     * @type
     */ get prop() {}
     /**
      * @param value
     */ set prop(value) {}
     /**
-     * @type {number} propWithFlow
+     * @type {number}
     */ get propWithFlow() {}
               
     /**
