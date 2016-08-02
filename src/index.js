@@ -1,6 +1,5 @@
 import 'better-log/install';
 import jsdoc from './jsdoc';
-import { findJsdoc, findOrCreateJsdoc } from './jsdocNodeComment';
 import typeAnnotationToJsdocType from './typeAnnotationToJsdocType';
 
 
@@ -10,13 +9,6 @@ module.exports = function pluginAddJsdocAnnotations({ types: t }) {
             'FunctionDeclaration|FunctionExpression|ClassMethod'(path, state) {
                 const { node } = path;
                 const tags = [];
-
-                if (!t.isClassMethod(node)) {
-                    tags.push({
-                        title: 'function',
-                        name: node.key && node.key.name,
-                    });
-                }
 
                 if (node.params) {
                     node.params.forEach(param => {
@@ -44,7 +36,7 @@ module.exports = function pluginAddJsdocAnnotations({ types: t }) {
                             tags.push({
                                 title: 'param',
                                 name: param.name,
-                                optional: param.optional,
+                                optional: param.optional || (param.typeAnnotation && param.typeAnnotation.typeAnnotation.type === 'NullableTypeAnnotation'),
                                 type: jsdocType,
                             });
                         }
@@ -66,7 +58,11 @@ module.exports = function pluginAddJsdocAnnotations({ types: t }) {
                     });
                 }
 
-                jsdoc(path, tags);
+                if (path.parentPath && path.parentPath.isExportDefaultDeclaration()) {
+                    jsdoc(path.parentPath, tags);
+                } else {
+                    jsdoc(path, tags);
+                }
             },
         },
     };

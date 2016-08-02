@@ -8,7 +8,7 @@ function tagNameToString(tag) {
     }
 
     if (tag.optional || tag.default !== undefined) {
-        return `[${tag.name}${tag.default ? `=${tag.default}` : ''}]`;
+        return `[${tag.name}${tag.default !== undefined ? `=${tag.default}` : ''}]`;
     }
 
     return tag.name;
@@ -53,5 +53,5 @@ export default function jsdoc(path, tags) {
             jsdocComment.value += `\r\n * ${stringTag}`;
         }
     });
-    jsdocComment.value += `\r\n`;
+    jsdocComment.value += '\r\n';
 }

@@ -1,4 +1,4 @@
-# babel-plugin-add-jsdoc-properties
+# babel-plugin-add-jsdoc-annotations
 
 Adds [JSDoc](https://github.com/jsdoc3/jsdoc) annotations to source code.
 
