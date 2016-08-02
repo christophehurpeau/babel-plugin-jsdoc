@@ -1,6 +1,7 @@
 import 'better-log/install';
 import jsdoc from './jsdoc';
 import typeAnnotationToJsdocType from './typeAnnotationToJsdocType';
+import jsdocParam from './jsdocParam';
 
 
 module.exports = function pluginAddJsdocAnnotations({ types: t }) {
@@ -11,35 +12,8 @@ module.exports = function pluginAddJsdocAnnotations({ types: t }) {
                 const tags = [];
 
                 if (node.params) {
-                    node.params.forEach(param => {
-                        if (param.type === 'RestElement') {
-                            tags.push({
-                                title: 'param',
-                                name: param.argument.name,
-                                type: '...*',
-                            });
-                        } else if (param.type === 'AssignmentPattern') {
-                            const jsdocType = typeAnnotationToJsdocType(
-                                param.left.typeAnnotation
-                                && param.left.typeAnnotation.typeAnnotation
-                            );
-                            tags.push({
-                                title: 'param',
-                                name: param.left.name,
-                                default: param.right.value,
-                                type: jsdocType,
-                            });
-                        } else {
-                            const jsdocType = typeAnnotationToJsdocType(
-                                param.typeAnnotation && param.typeAnnotation.typeAnnotation
-                            );
-                            tags.push({
-                                title: 'param',
-                                name: param.name,
-                                optional: param.optional || (param.typeAnnotation && param.typeAnnotation.typeAnnotation.type === 'NullableTypeAnnotation'),
-                                type: jsdocType,
-                            });
-                        }
+                    node.params.forEach((param, i) => {
+                        jsdocParam(param, i, tags);
                     });
                 }
 
@@ -47,7 +21,7 @@ module.exports = function pluginAddJsdocAnnotations({ types: t }) {
                     const type = node.returnType
                                  && typeAnnotationToJsdocType(node.returnType.typeAnnotation);
                     tags.push({
-                        title: 'member',
+                        title: 'type',
                         name: node.key.name,
                         type,
                     });
@@ -58,7 +32,7 @@ module.exports = function pluginAddJsdocAnnotations({ types: t }) {
                     });
                 }
 
-                if (path.parentPath && path.parentPath.isExportDefaultDeclaration()) {
+                if (path.parentPath && (path.parentPath.isExportDefaultDeclaration() || path.parentPath.isExportNamedDeclaration())) {
                     jsdoc(path.parentPath, tags);
                 } else {
                     jsdoc(path, tags);

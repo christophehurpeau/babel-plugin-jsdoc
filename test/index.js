@@ -20,7 +20,7 @@ const options = {
 };
 
 function normalizeLines(str) {
-    return str.trim().replace(/\*\/[ ]*/g,'*/ ').replace(/[ \t]*\r?\n/g, '\n');
+    return str.trim().replace(/\*\/[ ]*/g,'*/ ').replace(/[ \t]*\r?\n/g, '\n').replace(/[ \t]+/g, ' ');
 }
 
 tests.forEach(filename => {
