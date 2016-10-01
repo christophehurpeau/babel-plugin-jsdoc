@@ -41,6 +41,6 @@ export default function (param, i, tags) {
         );
         const optional = param.optional || (param.typeAnnotation && param.typeAnnotation.typeAnnotation.type === 'NullableTypeAnnotation');
 
-        recursiveTag(param.name || `param${i+1}`, tags, jsdocType, optional);
+        recursiveTag(param.name || `param${i + 1}`, tags, jsdocType, optional);
     }
 }

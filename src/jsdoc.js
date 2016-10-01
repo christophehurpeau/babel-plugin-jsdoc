@@ -35,7 +35,7 @@ export default function jsdoc(path, tags) {
     const parsedJsdoc = parseJsdoc(jsdocComment.value);
     const parsedTags = parsedJsdoc && parsedJsdoc.tags.map(normalizeTag);
 
-    tags.forEach(tag => {
+    tags.forEach((tag) => {
         tag = normalizeTag(tag);
 
         const keys = ['title'];

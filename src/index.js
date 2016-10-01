@@ -7,7 +7,7 @@ import jsdocParam from './jsdocParam';
 module.exports = function pluginAddJsdocAnnotations({ types: t }) {
     return {
         visitor: {
-            'FunctionDeclaration|FunctionExpression|ClassMethod'(path, state) {
+            'FunctionDeclaration|FunctionExpression|ClassMethod': function (path, state) {
                 const { node } = path;
                 const tags = [];
 
@@ -36,7 +36,10 @@ module.exports = function pluginAddJsdocAnnotations({ types: t }) {
                     });
                 }
 
-                if (path.parentPath && (path.parentPath.isExportDefaultDeclaration() || path.parentPath.isExportNamedDeclaration())) {
+                if (path.parentPath && (
+                    path.parentPath.isExportDefaultDeclaration()
+                    || path.parentPath.isExportNamedDeclaration()
+                )) {
                     jsdoc(path.parentPath, tags);
                 } else {
                     jsdoc(path, tags);

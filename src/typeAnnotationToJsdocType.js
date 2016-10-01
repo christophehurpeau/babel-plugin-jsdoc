@@ -30,7 +30,7 @@ export default function typeAnnotationToJsdocTag(annotation) {
         case 'ObjectTypeAnnotation':
             return annotation.properties;
         case 'TupleTypeAnnotation':
-            return `Array.<*>`;
+            return 'Array.<*>';
         case 'TypeParameterInstantiation':
         case 'FunctionTypeAnnotation':
             return 'Function';
@@ -40,7 +40,7 @@ export default function typeAnnotationToJsdocTag(annotation) {
         case 'MixedTypeAnnotation':
             return '*';
         default:
-            console.log('[Warn] unknown type: ' + annotation.type);
+            console.log(`[Warn] unknown type: ${annotation.type}`);
             return '*';
     }
 }

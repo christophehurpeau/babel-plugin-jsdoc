@@ -1,5 +1,5 @@
 {
-  "extends": "airbnb/base",
+  "extends": "airbnb-base",
   "rules": {
     "indent": [2, 4, {"SwitchCase": 1}], // http://eslint.org/docs/rules/indent
     "default-case": 0,
