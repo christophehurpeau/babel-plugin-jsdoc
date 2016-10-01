@@ -1,6 +1,6 @@
 {
   "name": "babel-plugin-add-jsdoc-annotations",
-  "version": "5.0.0",
+  "version": "5.1.0",
   "description": "Adds JSDoc annotations to source code",
   "repository": "christophehurpeau/babel-plugin-jsdoc",
   "keywords": [
