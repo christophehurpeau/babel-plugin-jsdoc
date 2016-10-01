@@ -14,7 +14,7 @@
   "scripts": {
     "build": "babel src --out-dir dist",
     "lint": "eslint src/",
-    "preversion": "npm run lint && npm run build",
+    "preversion": "npm run lint && npm run build && npm run test",
     "release": "pob-repository-check-clean && pob-release",
     "test": "mocha -b -c -u tdd --es_staging test/index.js",
     "test:watch": "mocha -w -b -c -u tdd --es_staging test/index.js",
