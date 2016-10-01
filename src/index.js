@@ -11,6 +11,11 @@ module.exports = function pluginAddJsdocAnnotations({ types: t }) {
                 const { node } = path;
                 const tags = [];
 
+                const name = node.key || node.id;
+                if (name && name.name && name.name.startsWith('_')) {
+                    tags.push({ title: 'private' });
+                }
+
                 if (node.params) {
                     node.params.forEach((param, i) => {
                         jsdocParam(param, i, tags);
