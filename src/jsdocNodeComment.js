@@ -1,32 +1,32 @@
 import doctrine from 'doctrine';
 
 export function findJsdoc(node) {
-    if (!node.leadingComments) {
-        return undefined;
-    }
+  if (!node.leadingComments) {
+    return undefined;
+  }
 
-    return node.leadingComments.find(comment => /^\*(?:$|[^*])/.test(comment.value));
+  return node.leadingComments.find(comment => /^\*(?:$|[^*])/.test(comment.value));
 }
 
 export function findOrCreateJsdoc(path) {
-    const jsdoc = findJsdoc(path.node);
+  const jsdoc = findJsdoc(path.node);
 
-    if (jsdoc) {
-        return jsdoc;
-    }
+  if (jsdoc) {
+    return jsdoc;
+  }
 
-    path.addComment('leading', '*');
-    return findJsdoc(path.node);
+  path.addComment('leading', '*');
+  return findJsdoc(path.node);
 }
 
 export function parseJsdoc(comment) {
-    if (!comment) {
-        return null;
-    }
+  if (!comment) {
+    return null;
+  }
 
-    return doctrine.parse(comment || '', {
-        unwrap: true,
-        loose: true,
-        sloppy: true,
-    });
+  return doctrine.parse(comment || '', {
+    unwrap: true,
+    loose: true,
+    sloppy: true,
+  });
 }
